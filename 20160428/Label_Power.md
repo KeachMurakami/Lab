@@ -42,14 +42,14 @@ output:
         * グロースチャンバ (個数把握済みです)  
         * 遠心分離器, フリーザーなどの大型機器  
 
-例1: <span style="background:#EEEEEE; color:black;">[Timer (< 0.5A)]</span>  
-例2: <span style="background:#EEEEEE; color:black;">[Graphtech ID=B (< 0.5A)]</span>  
-例3: <span style="background:red; color:white;">[Chamber ID=A (5 A) 差し替え禁止]</span>  
+例1: <span style="background:#EEEEEE; color:black;">`Timer (< 0.5A)`</span>  
+例2: <span style="background:#EEEEEE; color:black;">`Graphtech ID=B (< 0.5A)`</span>  
+例3: <span style="background:red; color:white;">`Chamber ID=A (5 A) 差し替え禁止`</span>  
 
 
 ##### 対象装置 (暫定)  
 
-* Graphtech (IDつき)
+* Graphtech (IDつき)  
 * 直流電源 (PRシリーズ; IDつき)  
 * エアポンプ (IDつき？)  
 * タイマー  
