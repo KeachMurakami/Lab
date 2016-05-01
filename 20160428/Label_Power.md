@@ -3,7 +3,7 @@ title: 電源ケーブルのラベリング
 output:
   html_document:
     theme: sandstone
-    self_contained: false
+    self_contained: true
     toc: true
     toc_float: true
 ---
