@@ -1,16 +1,21 @@
 ---
 title: 電源ケーブルのラベリング
 output:
-  html_document:
-    theme: sandstone
-    toc: true
-    toc_float: true
+  md_document:
+    variant: markdown_github
 ---
+
+<!-- output: -->
+<!--   html_document: -->
+<!--     theme: sandstone -->
+<!--     toc: true -->
+<!--     toc_float: true -->
 
 ##### 概要  
 
 研究室内の電源ケーブルの誤脱着事故を避けるため、電源ケーブルのプラグ部付近へのラベリングを随時実施してください。  
 未ラベルの該当機器を使う際には、ラベルを作成して (あるいは作成をお願いして) 貼ってください。  
+作成済みのラベルは吉田さんがお持ちです。  
 
 ------------
 
@@ -41,6 +46,7 @@ output:
     * チャンバへの給電はかなり最適化されているので、不用意に差し替えないように、など  
     * 差し替え禁止のケーブルは色付きなどいかがでしょうか  
         * → 黄色ラベルを使用します  
+        * → 納品待ち  
 
 例1: <span style="background:#EEEEEE; color:black;">`Timer`</span>  
 例2: <span style="background:#EEEEEE; color:black;">`Graphtech ID=B (0.15A)`</span>  
@@ -62,11 +68,11 @@ output:
 
 |装置|ラベル作成|ラベル貼付|
 |:---|:---------|:---------|
-|直流電源 (PRシリーズ)|作成済み|随時|
+|直流電源 (PRシリーズ)|済|残り３台|
 |エアポンプ|未作成||
 |タイマー|未作成||
-|Graphtech|A-Eまで作成済み|随時|
-|MCH|済|済|
+|Graphtech|済|済 (7台)|
+|MCH|済|済 (14台)|
 |グロースチャンバ|ラベル作成済み|随時|
 
 
@@ -86,3 +92,6 @@ output:
 * これを見るような几帳面な人はやる  
 
 という現実を踏まえた結果、この対処です。  
+
+<!-- knitr::knit(input = "~/Dropbox/working.dir/misc/Lab/20160428/Label_Power.Rmd", -->
+<!--             output = "~/Dropbox/working.dir/misc/Lab/20160428/Label_Power.md") -->
