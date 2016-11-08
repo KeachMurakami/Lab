@@ -6,10 +6,14 @@
 使い方
 ------
 
--   以下のような形式のcsvファイルを用意します
+1.  以下のような形式のcsvファイルを用意します
     -   [sampleファイル](https://github.com/KeachMurakami/Lab/blob/master/GrowthPlot/SampleData.csv)
-    -   csvファイルは保守管理の簡単さから、とりあえずOneDriveへ
-    -   GitHubLabで管理できると素敵
+    -   csvファイルは管理の簡単さから、とりあえず[OneDrive](https://onedrive.live.com/)に置いてあります
+    -   csvファイルをダウンロード -&gt;
+        同様のフォーマットで最下部にデータ追加 -&gt;
+        保存して再度アップロード
+        -   バージョン管理ソフト
+            ([GitLab](https://about.gitlab.com/)) で履歴も管理できると素敵です...
 
 <!-- -->
 
@@ -178,8 +182,8 @@
 </tbody>
 </table>
 
--   [アプリ](https://keachmurakami.shinyapps.io/GrowthPlot/)を開きます
--   OneDrive上で「対象csvファイルを右クリック -&gt; 埋め込み -&gt;
+1.  [アプリ](https://keachmurakami.shinyapps.io/GrowthPlot/)を開きます
+2.  OneDrive上で「対象csvファイルを右クリック -&gt; 埋め込み -&gt;
     共有」して表示された`cid=XXXXXX&resid=YYYYYY&authkey=ZZZZZZ`部をサイドバー内のテキストボックスに貼り付けます
 
 ### 注意

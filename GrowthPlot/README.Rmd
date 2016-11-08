@@ -24,18 +24,19 @@ opts_chunk$set(echo = TRUE)
 
 ## 使い方
 
-- 以下のような形式のcsvファイルを用意します  
+1. 以下のような形式のcsvファイルを用意します  
     - [sampleファイル](https://github.com/KeachMurakami/Lab/blob/master/GrowthPlot/SampleData.csv)
-    - csvファイルは保守管理の簡単さから、とりあえずOneDriveへ
-    - GitHubLabで管理できると素敵
+    - csvファイルは管理の簡単さから、とりあえず[OneDrive](https://onedrive.live.com/)に置いてあります
+    - csvファイルをダウンロード -> 同様のフォーマットで最下部にデータ追加 -> 保存して再度アップロード
+        - バージョン管理ソフト ([GitLab](https://about.gitlab.com/)) で履歴も管理できると素敵です...
 ```{r}
 read.csv("https://raw.githubusercontent.com/KeachMurakami/Lab/master/GrowthPlot/SampleData.csv") %>%
   head(10) %>%
   kable
 ```
 
-- [アプリ](https://keachmurakami.shinyapps.io/GrowthPlot/)を開きます
-- OneDrive上で「対象csvファイルを右クリック -> 埋め込み -> 共有」して表示された`cid=XXXXXX&resid=YYYYYY&authkey=ZZZZZZ`部をサイドバー内のテキストボックスに貼り付けます
+2. [アプリ](https://keachmurakami.shinyapps.io/GrowthPlot/)を開きます
+3. OneDrive上で「対象csvファイルを右クリック -> 埋め込み -> 共有」して表示された`cid=XXXXXX&resid=YYYYYY&authkey=ZZZZZZ`部をサイドバー内のテキストボックスに貼り付けます
 
 ### 注意
 
