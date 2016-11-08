@@ -24,19 +24,26 @@ opts_chunk$set(echo = TRUE)
 
 ## 使い方
 
-1. 以下のような形式のcsvファイルを用意します  
+- 以下のような形式のcsvファイルを用意します  
     - [sampleファイル](https://github.com/KeachMurakami/Lab/blob/master/GrowthPlot/SampleData.csv)
-    - csvファイルは管理の簡単さから、とりあえず[OneDrive](https://onedrive.live.com/)に置いてあります
-    - csvファイルをダウンロード -> 同様のフォーマットで最下部にデータ追加 -> 保存して再度アップロード
-        - バージョン管理ソフト ([GitLab](https://about.gitlab.com/)) で履歴も管理できると素敵です...
 ```{r}
 read.csv("https://raw.githubusercontent.com/KeachMurakami/Lab/master/GrowthPlot/SampleData.csv") %>%
   head(10) %>%
   kable
 ```
 
-2. [アプリ](https://keachmurakami.shinyapps.io/GrowthPlot/)を開きます
-3. OneDrive上で「対象csvファイルを右クリック -> 埋め込み -> 共有」して表示された`cid=XXXXXX&resid=YYYYYY&authkey=ZZZZZZ`部をサイドバー内のテキストボックスに貼り付けます
+- csvファイルを[OneDrive](https://onedrive.live.com/)にアップロードします
+    - 管理の簡単さから、‘とりあえず’のOneDriveです
+    - csvファイルをダウンロード -> 同様のフォーマットで最下部にデータ追加 -> 保存して再度アップロード
+        - Name ~ Remarkまでのカラムは名前・記入様式を変更しないように
+        - 変数カラムは適宜追加可能
+        - 欠測は`NA`で記入
+    - バージョン管理ソフト ([GitLab](https://about.gitlab.com/)) で履歴も管理できると素敵です...
+- OneDrive上で「対象csvファイルを右クリック -> 埋め込み -> 共有」して表示された文字列のうち、`cid=XXXXXX&resid=YYYYYY&authkey=ZZZZZZ`という部分をコピーします
+- [アプリ](https://keachmurakami.shinyapps.io/GrowthPlot/)を開き、サイドバー内のテキストボックスに該当文字列を貼り付けます
+    - このページ上部の`server.R`と`ui.R`がソースコードです
+    - R + Shiny + Shinyapps.io で動いています
+    - Shiny要素がややわかりづらいので、データのハンドリング・作図のプロセスが気になった場合は、`standalone.R`を見てください
 
 ### 注意
 
