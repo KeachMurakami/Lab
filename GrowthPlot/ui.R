@@ -14,13 +14,14 @@ shinyUI(
   dashboardPage(
     dashboardHeader(title = "Growth analysis of Tobacco in the LAB"),
     dashboardSidebar(
-      actionButton("pre", "サンプルサイズを決める"),
-      actionButton("post", "効果の強さを見る"),
-      actionButton("reset", "Clear"), 
-      textInput("PW",　"input following key after 'https://onedrive.live.com/download?'",　value = "")    ),
+      textInput("PW",　"input following key after 'https://onedrive.live.com/download?'",　value = "cid=C44EDADBA0053805&resid=C44EDADBA0053805%211471&authkey=AJH-4sGauQYPF-g"),
+      checkboxGroupInput("VarSelect", label = 'Columns to show:',
+                         choices = set_names(as.list(1:10), paste0("col.", 1:10)),
+                         selected = 1:2)
+      ),
     dashboardBody(
       htmlOutput("URLlink"),
-      plotlyOutput("Plotly")
+      plotlyOutput("Plotly", height = "800px")
     )
   )
 )
