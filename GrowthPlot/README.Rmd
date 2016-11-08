@@ -1,0 +1,43 @@
+---
+title: "README"
+author: "KeachMurakami"
+date: "11/8/2016"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(lubridate)
+library(magrittr)
+library(plotly)
+library(xlsx)
+opts_chunk$set(echo = TRUE)
+```
+
+## 成長可視化プロジェクト
+
+植物の成長のばらつき・バッチ間差を簡単に可視化します。
+
+
+## 使い方
+
+- 以下のような形式のcsvファイルを用意します  
+    - [sampleファイル](https://github.com/KeachMurakami/Lab/blob/master/GrowthPlot/SampleData.csv)
+    - csvファイルは保守管理の簡単さから、とりあえずOneDriveへ
+    - GitHubLabで管理できると素敵
+```{r}
+read.csv("https://raw.githubusercontent.com/KeachMurakami/Lab/master/GrowthPlot/SampleData.csv") %>%
+  head(10) %>%
+  kable
+```
+
+- [アプリ](https://keachmurakami.shinyapps.io/GrowthPlot/)を開きます
+- OneDrive上で「対象csvファイルを右クリック -> 埋め込み -> 共有」して表示された`cid=XXXXXX&resid=YYYYYY&authkey=ZZZZZZ`部をサイドバー内のテキストボックスに貼り付けます
+
+### 注意
+
+- カーブはとりあえず局所重み付き回帰曲線 (Lowess; Rのデフォルト) なので、あまり深い意味はありません
+- 機能リクエストばっちこいです

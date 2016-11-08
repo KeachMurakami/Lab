@@ -1,0 +1,11 @@
+name: GrowthPlot
+title: GrowthPlot
+account: keachmurakami
+server: shinyapps.io
+appId: 136398
+bundleId: 608710
+url: https://keachmurakami.shinyapps.io/GrowthPlot/
+when: 1478591805.34407
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: README.md|README.Rmd|SampleData.csv|README_files/.DS_Store|README_files/figure-markdown_strict/pressure-1.png
