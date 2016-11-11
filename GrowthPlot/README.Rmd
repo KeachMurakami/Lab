@@ -19,13 +19,13 @@ opts_chunk$set(echo = TRUE)
 
 ## 成長可視化アプリケーション
 
-植物の成長のばらつき・バッチ間差を簡単に可視化します。  
-自分のPC内のファイルもOneDrive上のファイルも可視化できます。  
+植物の成長のばらつき・バッチ間差を簡単に可視化します  
+自分のPC内のファイルもOneDrive上のファイルも可視化できます  
 
 ## 対象ファイル
-- .csv (ローカル/webとも対応)
+- `.csv` (ローカル/webとも対応)
     - [形式](https://github.com/KeachMurakami/Lab/blob/master/GrowthPlot/SampleData.csv)
-- .xlsx (ローカルのみ対応)
+- `.xlsx` (ローカルのみ対応)
     - [形式](https://github.com/KeachMurakami/Lab/blob/master/GrowthPlot/SampleData.xlsx)
 
 ```{r}
@@ -36,7 +36,7 @@ read.csv("https://raw.githubusercontent.com/KeachMurakami/Lab/master/GrowthPlot/
 
 - Name ~ Remarkまでのカラムは名前・記入様式を変更しないように
 - 変数カラムは適宜追加可能
-    - 変数カラム内に文字列のカラムがあるとエラーになる
+    - 変数カラム内に文字列のカラムがあるとエラーになります
 - 欠測は`NA`で記入または空欄
 
 ## 使い方
@@ -44,7 +44,9 @@ read.csv("https://raw.githubusercontent.com/KeachMurakami/Lab/master/GrowthPlot/
 ### 自分のPC上のデータを使用する場合
 
 - 所定形式の`.csv`または`.xlsx`ファイルを用意します  
-- [アプリ](https://keachmurakami.shinyapps.io/GrowthPlot/)を開き、左サイドバー内の「ファイルをアップロード」をクリックし、ファイルをアップロードします
+    - `.xlsx`だとファイルの読み込みに時間がかかる場合があります
+- [アプリ](https://keachmurakami.shinyapps.io/GrowthPlot/)を開き、左サイドバー内の「file upload」をクリックし、ファイルをアップロードします
+
 
 
 ### web上のデータを使用する場合
@@ -52,9 +54,9 @@ read.csv("https://raw.githubusercontent.com/KeachMurakami/Lab/master/GrowthPlot/
 - 所定形式の`.csv`ファイルを[OneDrive](https://onedrive.live.com/)にアップロードします
     - 管理の簡単さから、‘とりあえず’のOneDriveです
     - csvファイルをダウンロード -> 同様のフォーマットで最下部にデータ追加 -> 保存して再度アップロード
-    - バージョン管理ソフト ([GitLab](https://about.gitlab.com/)) で履歴も管理できると素敵です...
+    - バージョン管理ソフト ([GitLab](https://about.gitlab.com/)など) で履歴も管理できると素敵です...
 - OneDrive上で「対象csvファイルを右クリック -> 埋め込み -> 生成」をクリックし、表示された文字列 (`<iframe src ... cid=XXXXXX&resid=YYYYYY&authkey=ZZZZZZ ... </iframe>`) をコピーします
-- [アプリ](https://keachmurakami.shinyapps.io/GrowthPlot/)を開き、左サイドバー内の「OneDriveファイルのID」に文字列を貼り付けます
+- [アプリ](https://keachmurakami.shinyapps.io/GrowthPlot/)を開き、左サイドバー内の「OneDrive link」に文字列を貼り付けます
 
 
 ## 注意

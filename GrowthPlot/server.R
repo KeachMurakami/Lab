@@ -14,7 +14,7 @@ shinyServer(function(input, output) {
   output$URLlink <- renderText({'<a href = "https://github.com/KeachMurakami/Lab/tree/master/GrowthPlot">コードなど@GitHub</a>'})
   
   fileInput <- reactive({
-    inFile <- input$localFile
+    inFile <- input$LocalFile
     if(!is.null(inFile)){
       is_xlsx <-
         inFile$name %>%
@@ -26,7 +26,7 @@ shinyServer(function(input, output) {
           read.xlsx(sheetIndex = 1) %>%
           return
       } else {
-        input$localFile$datapath %>%
+        inFile$datapath %>%
           read.csv %>%
           return
       }
@@ -41,8 +41,8 @@ shinyServer(function(input, output) {
   })
   
 
-  output$test <- renderText(
-    fileInput() %>% colnames
+  output$FigHeight <- renderText(
+    input$FigHeight
       )
 
   output$Plotly <- renderPlotly({
@@ -92,14 +92,14 @@ shinyServer(function(input, output) {
         geom_point(data = GrowthLog_all, alpha = input$IndivAlpha/100)
 
       
-    if(input$Regression){
-      GrowthPlot <-
-        GrowthPlot +
-        geom_smooth(data = GrowthLog_all, aes(group = Experiment), alpha = .25)
-    } else {
+    if(input$LinePlot){
       GrowthPlot <-
         GrowthPlot +
         geom_line(alpha = .25)
+    } else {
+      GrowthPlot <-
+        GrowthPlot +
+        geom_smooth(data = GrowthLog_all, aes(group = Experiment), alpha = .25)
     }
     
     ggplotly(GrowthPlot)
