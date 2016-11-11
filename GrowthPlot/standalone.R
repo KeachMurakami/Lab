@@ -12,7 +12,7 @@ library(plotly)
       dplyr::mutate(Experiment = as.character(Experiment))
     
   # select shown variables
-    ShownVariables <- colnames(GrowthLog)[-(1:6)][1:2]
+    ShownVariables <- colnames(GrowthLog)[-(1:6)]
     
     GrowthLogRaw <-
       GrowthLog %>%
@@ -24,35 +24,54 @@ library(plotly)
                     -Name, -Experiment, -PlantNo, -Remark,
                     -Date_measured, -Date_sowing, -DayAfterSowing)
     
-  # dummy symbols at the origin (day 0)
-    GrowthLog_initial <-
+    # dummy symbols at the origin (day 0)
+    GrowthLogInitial <-
       GrowthLogRaw %>%
       dplyr::distinct(Name, Date_measured, Date_sowing, Experiment, PlantNo, variable, .keep_all = T) %>%
-      dplyr::mutate(Date_measured = Date_sowing,
-                    DayAfterSowing = Date_measured - Date_sowing,
-                    value = .0001)
+      mutate(Date_measured = Date_sowing,
+             DayAfterSowing = Date_measured - Date_sowing,
+             value = .0001) %>%
+      filter(variable %in% ShownVariables)
     
-  # calculate mean & sd
+    # Raw dataset
+    GrowthLog_all <-
+      dplyr::bind_rows(GrowthLogRaw, GrowthLogInitial) %>%
+      filter(variable %in% ShownVariables)
+    
+    # Mean & SD
     GrowthLog_mean <-
-      GrowthLogRaw %>%
-      dplyr::group_by(Name, Date_measured, Date_sowing, Experiment, variable) %>%
-      dplyr::summarise(SD = sd(value, na.rm = T),
+      GrowthLog_all %>%
+      group_by(Name, Date_measured, Date_sowing, Experiment, variable) %>%
+      summarise(SD = sd(value, na.rm = T),
                 value = mean(value, na.rm = T)) %>%
-      dplyr::mutate(DayAfterSowing = Date_measured - Date_sowing,
-                    PlantNo = 0) %>%
-      dplyr::filter(variable %in% ShownVariables)
-
-  # non-interactive plot
+      mutate(DayAfterSowing = Date_measured - Date_sowing,
+             PlantNo = 0) %>%
+      na.omit
+    
+    # plot
     GrowthPlot <-
-      dplyr::bind_rows(GrowthLogRaw, GrowthLog_initial) %>%
-      dplyr::filter(variable %in% ShownVariables) %>%
+      GrowthLog_mean %>%
       ggplot2::ggplot(aes(x = DayAfterSowing, y = value, col = Experiment, group = paste(Experiment, PlantNo))) +
-      geom_errorbar(data = GrowthLog_mean, aes(ymin = value - SD, ymax = value + SD), width = rel(.1)) +
-      geom_point(data = GrowthLog_mean) +
-      geom_point(alpha = .25) +
-      geom_line(alpha = .25) + 
-      geom_smooth(aes(group = Experiment), alpha = .3) +
-      facet_grid(variable ~ Name)
-
+      geom_errorbar(aes(ymin = value - SD, ymax = value + SD), width = rel(.1)) +
+      geom_point() + 
+      facet_grid(variable ~ Name, scale = "free")
+    
+    # add individual data points
+    GrowthPlot <- 
+      GrowthPlot +
+      geom_point(data = GrowthLog_all, alpha = .25)
+    
+    if(TRUE){
+    # add smoothing
+      GrowthPlot <-
+        GrowthPlot +
+        geom_smooth(data = GrowthLog_all, aes(group = Experiment), alpha = .25)
+    } else {
+    # add lines
+      GrowthPlot <-
+        GrowthPlot +
+        geom_line(alpha = .25)
+    }
+    
   # interactive plot    
     plotly::ggplotly(GrowthPlot)

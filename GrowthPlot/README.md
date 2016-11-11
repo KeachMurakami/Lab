@@ -1,13 +1,16 @@
-成長可視化プロジェクト
-----------------------
+成長可視化アプリケーション
+--------------------------
 
-植物の成長のばらつき・バッチ間差を簡単に可視化します。
+植物の成長のばらつき・バッチ間差を簡単に可視化します。  
+自分のPC内のファイルもOneDrive上のファイルも可視化できます。
 
-使い方
-------
+対象ファイル
+------------
 
--   以下のような形式のcsvファイルを用意します
-    -   [sampleファイル](https://github.com/KeachMurakami/Lab/blob/master/GrowthPlot/SampleData.csv)
+-   .csv (ローカル/webとも対応)
+    -   [形式](https://github.com/KeachMurakami/Lab/blob/master/GrowthPlot/SampleData.csv)
+-   .xlsx (ローカルのみ対応)
+    -   [形式](https://github.com/KeachMurakami/Lab/blob/master/GrowthPlot/SampleData.xlsx)
 
 <!-- -->
 
@@ -176,25 +179,53 @@
 </tbody>
 </table>
 
--   csvファイルを[OneDrive](https://onedrive.live.com/)にアップロードします
+-   Name ~ Remarkまでのカラムは名前・記入様式を変更しないように
+-   変数カラムは適宜追加可能
+    -   変数カラム内に文字列のカラムがあるとエラーになる
+-   欠測は`NA`で記入または空欄
+
+使い方
+------
+
+### 自分のPC上のデータを使用する場合
+
+-   所定形式の`.csv`または`.xlsx`ファイルを用意します  
+-   [アプリ](https://keachmurakami.shinyapps.io/GrowthPlot/)を開き、左サイドバー内の「ファイルをアップロード」をクリックし、ファイルをアップロードします
+
+### web上のデータを使用する場合
+
+-   所定形式の`.csv`ファイルを[OneDrive](https://onedrive.live.com/)にアップロードします
     -   管理の簡単さから、‘とりあえず’のOneDriveです
     -   csvファイルをダウンロード -&gt;
         同様のフォーマットで最下部にデータ追加 -&gt;
         保存して再度アップロード
-        -   Name ~ Remarkまでのカラムは名前・記入様式を変更しないように
-        -   変数カラムは適宜追加可能
-        -   欠測は`NA`で記入
     -   バージョン管理ソフト
         ([GitLab](https://about.gitlab.com/)) で履歴も管理できると素敵です...
 -   OneDrive上で「対象csvファイルを右クリック -&gt; 埋め込み -&gt;
-    共有」して表示された文字列のうち、`cid=XXXXXX&resid=YYYYYY&authkey=ZZZZZZ`という部分をコピーします
--   [アプリ](https://keachmurakami.shinyapps.io/GrowthPlot/)を開き、サイドバー内のテキストボックスに該当文字列を貼り付けます
+    生成」をクリックし、表示された文字列
+    (`<iframe src ... cid=XXXXXX&resid=YYYYYY&authkey=ZZZZZZ ... </iframe>`)
+    をコピーします
+-   [アプリ](https://keachmurakami.shinyapps.io/GrowthPlot/)を開き、左サイドバー内の「OneDriveファイルのID」に文字列を貼り付けます
+
+注意
+----
+
+-   カーブは局所重み付き回帰曲線 (Lowess; Rのデフォルト)
+    なので、あまり深い意味はありません
+    -   対数成長・ロジスティック成長などのプログラムも組むかも
+-   機能リクエストばっちこいです (D論が終わったらやります)
+
+その他
+------
+
+-   能動的にアプリケーションを消すことはありませんが、各種サービスが停止したら維持に力は注ぎません
+-   R + Shiny + Shinyapps.io で動いています
     -   このページ上部の`server.R`と`ui.R`がソースコードです
-    -   R + Shiny + Shinyapps.io で動いています
     -   Shiny要素がややわかりづらいので、データのハンドリング・作図のプロセスが気になった場合は、`standalone.R`を見てください
 
-### 注意
+License
+-------
 
--   カーブはとりあえず局所重み付き回帰曲線 (Lowess; Rのデフォルト)
-    なので、あまり深い意味はありません
--   機能リクエストばっちこいです
+These codes are licensed under CC0.
+
+[![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png "CC0")](http://creativecommons.org/publicdomain/zero/1.0/deed.ja)
